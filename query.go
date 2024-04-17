@@ -1,6 +1,7 @@
 package flexmgo
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"strings"
@@ -303,7 +304,6 @@ func (q *Query) Cursor(m M) df.ICursor {
 
 		err = wrapTx(conn, func(ctx mongo.SessionContext) error {
 			var err error
-			//fmt.Println(codekit.JsonString(opt.Sort))
 			qry, err = coll.Find(ctx, where, opt)
 			return err
 		})
@@ -444,7 +444,7 @@ func wrapTx(conn *Connection, fn func(ctx mongo.SessionContext) error) error {
 			return fn(sc)
 		})
 	} else {
-		err = fn(nil)
+		err = fn(mongo.NewSessionContext(context.Background(), nil))
 	}
 	return err
 }
