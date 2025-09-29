@@ -2,10 +2,10 @@ module github.com/ariefdarmawan/flexmgo
 
 go 1.19
 
-replace git.kanosolution.net/kano/dbflex => ../dbflex
+// replace git.kanosolution.net/kano/dbflex => ../dbflex
 
 require (
-	git.kanosolution.net/kano/dbflex v1.3.4
+	git.kanosolution.net/kano/dbflex v1.3.10-0.20250929123842-faeaeb54926e
 	github.com/ariefdarmawan/serde v0.1.1
 	github.com/sebarcode/codekit v0.1.2
 	github.com/sebarcode/logger v0.1.1
