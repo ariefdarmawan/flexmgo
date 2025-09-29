@@ -50,11 +50,11 @@ func (q *Query) BuildFilter(f *df.Filter) (interface{}, error) {
 				Set("$regex", fmt.Sprintf(".*%s.*", fs[0])).
 				Set("$options", "i"))
 		}
-	} else if f.Op == df.OpStartWith {
+	} else if f.Op == df.OpStartsWith {
 		fm.Set(f.Field, M{}.
 			Set("$regex", fmt.Sprintf("^%s", f.Value)).
 			Set("$options", "i"))
-	} else if f.Op == df.OpEndWith {
+	} else if f.Op == df.OpEndsWith {
 		fm.Set(f.Field, M{}.
 			Set("$regex", fmt.Sprintf("%s$", f.Value)).
 			Set("$options", "i"))
